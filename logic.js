@@ -24,8 +24,7 @@ var cityMarkers = [];
 d3.json(url, function(data) {
   
   var feats= data.features;
-
-  console.log(feats);
+  console.log(data);
   // Loop through data
   feats.forEach(function (a){
     var loc = a.geometry;
@@ -36,7 +35,6 @@ d3.json(url, function(data) {
       var color = '#000';
       var opacity = 1;
 
-      console.log(magni);
       if(magni > 5){
         color = "#ff0000";
         opacity = .9;
@@ -103,7 +101,7 @@ d3.json(url, function(data) {
 
   // Pass our map layers into our layer control
   // Add the layer control to the map
-  L.control.layers(baseMaps, overlayMaps).addTo(myMap);
+  L.control.layers(baseMaps, overlayMaps, {collapsed: false}).addTo(myMap);
 });
 
 
