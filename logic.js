@@ -33,10 +33,32 @@ d3.json(url, function(data) {
 
     if (location) {
       // Add a new marker to the cluster group and bind a pop-up
+      var color = '#000';
+      var opacity = 1;
+
+      console.log(magni);
+      if(magni > 5){
+        color = "#ff0000";
+        opacity = .9;
+      }else if(magni > 4){
+        color ="#ff4000";
+        opacity = .7;
+      }
+      else if(magni > 3){
+        color ="#ff8000";
+        opacity = .6;
+      }
+      else if(magni > 2){
+        color ="#ffbf00";
+        opacity =.5;
+      }else{
+        color ="#ffff00";
+        opacity = .5;
+      }
         cityMarkers.push(
           L.circle([loc.coordinates[1], loc.coordinates[0]], {
-              color: 'red',
-              fillOpacity: 0.4,
+              color: color,
+              fillOpacity: opacity,
               radius: magni*15000
           }).bindPopup(a.properties.title)
         );
